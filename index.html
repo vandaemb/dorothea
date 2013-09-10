@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.5, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="stylesheet" href="js/ol/theme/default/style.css" type="text/css">
+    <link rel="stylesheet" href="js/jquery/jquery.mobile-1.3.2.min.css" type="text/css">
+
+    <link rel="stylesheet" href="css/Dorothea.css" type="text/css">
+
+    <script type="text/javascript" src="js/jquery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery.mobile-1.3.2.min.js"></script>
+    <script type="text/javascript" src='js/proj4js/proj4js-compressed.js'></script>
+    <script type="text/javascript" src="js/ol/OpenLayers.js"></script>
+    <script type="text/javascript" src="js/Dorothea.js"></script>
+
+
+    <title>Dorothea</title>
+</head>
+
+<body onLoad="startup()">
+
+    <div data-role="page" id="mappage">
+
+        <div data-role="header" data-nobackbtn="true" data-fixed="true">
+            <h1 style="text-align: left; margin: 11px">Dorothea</h1>
+        </div>
+
+        <div id="map" data-role="content" style="padding: 0px;">
+        </div>
+
+        <div data-role="footer" data-fixed="true" style="text-align: center; padding: 5px 0;">
+            <a href="#survey" data-icon="search" data-role="button">Verslag opmaken</a>
+            <a href="#" id="locate" data-role="button" data-icon="locate" data-iconpos="right" >GPS</a>
+        </div>
+
+        <div id="navigation" data-role="controlgroup" data-type="vertical">
+            <a href="#" data-role="button" data-icon="plus" id="plus" data-iconpos="notext"></a>
+            <a href="#" data-role="button" data-icon="minus" id="minus" data-iconpos="notext"></a>
+        </div>
+    </div>
+
+    <div data-role="page" id="survey">
+        <div data-role="header" data-position="fixed">
+            <a href="#mappage" data-icon="arrow-l">Terug</a>
+
+            <h1  style="text-align: center; margin: 11px">Nieuw verslag</h1>
+        </div>
+
+        <div data-role=content>
+
+            <form enctype="multipart/form-data" action="upload.php" method="POST"  data-ajax="false">
+                <ul id="info" data-role="listview" data-inset="true">
+                </ul>
+                <h3>Inhoud</h3>
+                <textarea  id="usertext" name="usertext"></textarea>
+
+                <div class="hiddenfile">
+                    <input type="file" name="userfile" accept="image/*;capture=camera" multiple/>
+                    <input type="text" name="ident8" id="ident8">
+                    <input type="text" name="refpt" id="refpt">
+                    <input type="text" name="lambert72" id="lambert72">
+                    <input type="text" name="wgs84" id="wgs84">
+                </div>
+                <button id="chooseFile">Bijlage</button>
+                <div id="content"></div>
+                <input type="hidden" name="MAX_FILE_SIZE" value="5120000" />
+
+                <h3>Opties</h3>
+                <label for=mail>Verslag doormailen?</label>
+                <input type=checkbox id=mail name=checkb_mail />
+
+                <label for=geoloket>Verslag inladen in mijn geoloket?</label>
+                <input type=checkbox id=geoloket name=checkb_geoloket />
+
+                <label for=kml>Kml genereren?</label>
+                <input type=checkbox id=kml name=checkb_kml />
+
+                <input type="submit" value="Send File" />
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>
