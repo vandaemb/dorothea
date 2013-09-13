@@ -1,2 +1,10 @@
-This file was created by IntelliJ IDEA 11.1.4 for binding GitHub repository
-This file was modified by IntelliJ IDEA 11.1.4 for binding GitHub repository
+# Dorothea
+
+Dorothea is a concept project. It is a simple survey tool, including
+* a map component. The app will have a geolocation control, and the user will be able to drag a marker on the map to make the location more precise.
+* location services. Once the marker is dragged, location data is automatically fetched from another server. (in our case /wegendatabank)
+* image upload. The user will be able to take a screenshot and upload it.
+* mail. The user can send his survey to an email address.
+* kml generation. The user can choose to generate a .kml and have it forwarded to his email address.
+* Push to gis. The data can be pushed as JSON to an able mapping component for further analysis on desktop. (in our case /geoloket)
+Its main purpose is to test overall performance of the data connection in the field, and the performance of the stock browser versus chrome.
