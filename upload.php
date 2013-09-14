@@ -115,9 +115,24 @@
 
     #  generate kml
     if (isset($_POST['checkb_kml'])) {
+        $kmlfile = $uploaddir . basename($_FILES['userfile']['name']) . ".kml";
+        $output =  '<?xml version="1.0" encoding="UTF-8"?>' .PHP_EOL;
+        $output .= '<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">' .PHP_EOL;
+        $output .= '<Document>' .PHP_EOL;
+        $output .= '<name>Testlabel.kml</name>' .PHP_EOL;
+        $output .= '<Placemark>' .PHP_EOL;
+        $output .= '<name>Testlabel</name>' .PHP_EOL;
+        $output .= '<description><![CDATA[' . "Verslag van opmeting gedaan op de " . $_POST["ident8"] . ", referentiepunt " . $_POST["refpt"] . '.' . $_POST["usertext"] . '<a href="http://10.132.32.231/dorothea/uploads/' . basename($_FILES['userfile']['name']) . '">Klik hier voor de afbeelding bij deze survey</a>]]></description>' .PHP_EOL;
+        $output .= '<LookAt><longitude>' . $_POST["wgs84lon"] . '</longitude><latitude>' . $_POST["wgs84lat"] . '</latitude><altitude>0</altitude><heading>1.121395505621607</heading><tilt>0</tilt><range>1050.267731980781</range><gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode></LookAt>' .PHP_EOL;
+        $output .= '<Point><coordinates>' . $_POST["wgs84lon"] . "," . $_POST["wgs84lat"] . ',0</coordinates></Point>' .PHP_EOL;
+        $output .= '</Placemark>' .PHP_EOL;
+        $output .= '</Document>' .PHP_EOL;
+        $output .= '</kml>' .PHP_EOL;
+
+        file_put_contents($kmlfile, $output);
         echo "KML: SUCCESS </br>";
     }
 
-    # return to map
+
 
 ?>

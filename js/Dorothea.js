@@ -243,10 +243,14 @@ function init() {
                 $("#info").append("<li>Lambert72: <span> (" + lonlat.lon + "," + lonlat.lat + ");  GPS: ( " + gpslonlat.lon + "," + gpslonlat.lat + ") </span></li>");
             }
 
+
+            $("#wgs84lon").val(gpslonlat.lon);
+            $("#wgs84lat").val(gpslonlat.lat);
             $("#ident8").val(locjson.ident8);
             $("#refpt").val(locjson.position);
             $("#lambert72").val("(" + lonlat.lon + "," + lonlat.lat + ")");
             $("#wgs84").val("(" + gpslonlat.lon + "," + gpslonlat.lat + ")");
+
 
 
 
