@@ -1,2 +1,3 @@
-//Proj4js.defs["EPSG:31370"] = "+proj=lcc +lat_1=51.16666723333333 +lat_2=49.8333339 +lat_0=90 +lon_0=4.367486666666666 +x_0=150000.013 +y_0=5400088.438 +ellps=intl +towgs84=106.869,-52.2978,103.724,-0.33657,0.456955,-1.84218,1 +units=m +no_defs";
-Proj4js.defs["EPSG:31370"] = "+proj=lcc +lat_1=51.16666723333333 +lat_2=49.8333339 +lat_0=90 +lon_0=4.367486666666666 +x_0=150000.013 +y_0=5400088.438 +ellps=intl +towgs84=-106.869,52.2978,-103.724,0.3366,-0.457,1.8422,-1.2747 +units=m +no_defs";
+Proj4js.defs["EPSG:31370"]   = "+proj=lcc +lat_1=51.16666723333333 +lat_2=49.8333339        +lat_0=90 +lon_0=4.367486666666666 +x_0=150000.013 +y_0=5400088.438 +ellps=intl +towgs84=-106.868628,52.297783,-103.723893,0.33657,-0.456955,1.842183,-1.2747 +units=m +no_defs";
+//Proj4js.defs["EPSG:31370"] = "+proj=lcc +lat_1=51.16666723333334 +lat_2=49.83333389999999 +lat_0=90 +lon_0=4.367486666666666 +x_0=150000.013 +y_0=5400088.438 +ellps=intl +towgs84=-99.1      ,53.3     ,-112.5     ,0.419  ,-0.83,1.885       ,-1.0    +units=m +no_defs";
+//The standard epsg:31370 def doesn't seem to cut it. For more info: Source: http://lists.maptools.org/pipermail/proj/2009-July/004779.html
