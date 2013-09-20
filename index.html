@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="initial-scale=1.5, user-scalable=no" />
+    <!--chrome-->
+    <!--<meta name="viewport" content="initial-scale=1.5, user-scalable=no, width=device-width" />-->
+    <!--native browser-->
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width,user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes">
 
     <link rel="stylesheet" href="js/ol/theme/default/style.css" type="text/css">
@@ -27,7 +30,7 @@
             <h1 style="text-align: left; margin: 11px">Dorothea</h1>
         </div>
 
-        <div id="map" data-role="content" style="padding: 0px;">
+        <div id="map" data-role="content" style="padding: 0;">
         </div>
 
         <div data-role="footer" data-fixed="true" style="text-align: center; padding: 5px 0;">
@@ -57,7 +60,7 @@
                 <textarea  id="usertext" name="usertext"></textarea>
 
                 <div class="hiddenfile">
-                    <input type="file" name="userfile" accept="image/*;capture=camera" multiple/>
+                    <input type="file" name="userfile" accept="image/*;capture=camera"/>
                     <input type="text" name="ident8" id="ident8">
                     <input type="text" name="refpt" id="refpt">
                     <input type="text" name="lambert72" id="lambert72">
@@ -67,7 +70,7 @@
                 </div>
                 <button id="chooseFile">Bijlage</button>
                 <div id="content"></div>
-                <input type="hidden" name="MAX_FILE_SIZE" value="5120000" />
+                <input type="hidden" name="MAX_FILE_SIZE" value="512000000" />
 
                 <h3>Opties</h3>
                 <label for=mail>Verslag doormailen?</label>
@@ -75,9 +78,6 @@
 
                 <label for=geoloket>Verslag inladen in mijn geoloket?</label>
                 <input type=checkbox id=geoloket name=checkb_geoloket />
-
-                <label for=kml>Kml genereren?</label>
-                <input type=checkbox id=kml name=checkb_kml />
 
                 <input type="submit" value="Send File" />
             </form>

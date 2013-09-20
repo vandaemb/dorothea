@@ -148,24 +148,15 @@ function init() {
         }
     });
 
-
-    var style = {
-        fillOpacity: 0.1,
-        fillColor: '#000',
-        strokeColor: '#f00',
-        strokeOpacity: 0.6
-    };
-
-
-
-
+//
+//    var style = {
+//        fillOpacity: 0.1,
+//        fillColor: '#000',
+//        strokeColor: '#f00',
+//        strokeOpacity: 0.6
+//    };
 
     $(window).bind("orientationchange resize pageshow", fixContentHeight);
-
-
-
-
-
 
 
     $("#chooseFile").click(function(e){
@@ -182,7 +173,7 @@ function init() {
         var reader = new FileReader();
 
         reader.onerror = function (event) {
-            $("#content").innerHTML = "Error bij inladen bestand";
+            $("#content").innerHTML = "Error bij inladen bestand: " + event;
         };
 
         reader.onload = function (event) {
@@ -214,16 +205,16 @@ function init() {
 
     function updateloc(ev) {
         var lonlat = map.getLonLatFromPixel(ev.xy);
+
         var point = new OpenLayers.Feature.Vector(
             new OpenLayers.Geometry.Point(lonlat.lon, lonlat.lat)
         );
 
         var fromProjection = new OpenLayers.Projection("EPSG:31370");
         var toProjection   = new OpenLayers.Projection("EPSG:4326");
-        var gpslonlat      = lonlat.clone();
+
+        var gpslonlat = lonlat.clone();
         gpslonlat.transform(fromProjection, toProjection);
-
-
 
         markerLayer.destroyFeatures();
         markerLayer.addFeatures(point);
@@ -250,9 +241,6 @@ function init() {
             $("#refpt").val(locjson.position);
             $("#lambert72").val("(" + lonlat.lon + "," + lonlat.lat + ")");
             $("#wgs84").val("(" + gpslonlat.lon + "," + gpslonlat.lat + ")");
-
-
-
 
         });
     }
