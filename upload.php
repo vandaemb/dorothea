@@ -1,12 +1,18 @@
 <?php
+    # UPLOAD : upload dir
+    $uploaddir = '/var/www/dorothea/uploads/';
 
-    $uploaddir = '/var/www/dorothea/uploads/';                                                      # UPLOAD : upload dir
-    $my_name = "Dorothea";                                                                          # EMAIL  : name
-    $my_mail = "dorothea@mow.vlaanderen.be";                                                        # EMAIL  : sender email address
+    # UPLOAD : upload dir
+    $my_name = "Dorothea";
 
-    $idgenerator = date("dmY-His") .'-DORO' . rand(0, 10000);  # FILE UPLOAD: expression to generate unique filenames
+    # EMAIL  : sender email address
+    $my_mail = "dorothea@mow.vlaanderen.be";
 
-    $geoloket_put_url = 'http://10.132.32.231/geoloket/rest/configreader/loketten/set/test/test';   # GEOLOKET PUSH: path to configreader endpoint
+    # FILE UPLOAD: expression to generate unique filenames
+    $idgenerator = date("dmY-His") .'-DORO' . rand(0, 10000);
+
+    # GEOLOKET PUSH: path to configreader endpoint
+    $geoloket_put_url = 'http://10.132.32.231/geoloket/rest/configreader/loketten/set/' . 'test' . '/test';
     $ext = "." . substr($_FILES["userfile"]["name"], strrpos($_FILES["userfile"]["name"], '.')+1);
 
     $uploadfile = $uploaddir .$idgenerator . $ext;                                                  # Destination file on server
