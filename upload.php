@@ -108,9 +108,6 @@
         $data = (array("ConfigServices_error_mail_to_address" => "dorothea_mobile@mow.vlaanderen.be"));
         $data_string = json_encode($data);
 
-        echo $data_string;
-
-
         $ch = curl_init($geoloket_put_url);
         curl_setopt($ch, CURLOPT_VERBOSE, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");

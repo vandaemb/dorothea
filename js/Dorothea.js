@@ -1,11 +1,35 @@
+var p_email, p_lon,p_lat
+
 OpenLayers.Util.onImageLoadError = function() {
     this.style.display="none"
 };
 
+function getURLParameter(name) {
+    return decodeURI(
+        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+    );
+}
+
 function startup() {
-    if (window.location.hash && window.location.hash != "#mappage") {
-        $.mobile.changePage("#mappage");
+//    if (window.location.hash && window.location.hash != "#mappage") {
+//        $.mobile.changePage("#mappage");
+//    }
+
+//         var query = $(this).data("url").split("?")[1];
+//         query = query.replace("id=","");
+//         console.log("id is: " & query)
+
+    p_email = getURLParameter("email");
+    if (p_email){
+        console.log(p_email);
+    } else {
+        console.log("geen email adres");
     }
+
+
+    p_lon = getURLParameter("lon");
+    p_lat = getURLParameter("lat");
+
     fixContentHeight();
     init();
 }
