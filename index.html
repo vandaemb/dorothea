@@ -28,10 +28,24 @@
 
         <div data-role="header" data-nobackbtn="true" data-fixed="true">
             <a href="#mappage" data-icon="arrow-l">Portaal</a>
+            <a id="lnkDialog" href="#popupLogin" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-icon="check" data-theme="a" data-transition="flip">Email opgeven</a>
             <h1 style="text-align: left; margin: 11px">Dorothea</h1>
         </div>
 
         <div id="map" data-role="content" style="padding: 0;">
+        </div>
+
+
+
+        <div data-role="popup" id="popupMenu" data-theme="a">
+            <div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">
+                <form>
+                    <div style="padding:10px 20px;">
+                        <h3>Gelieve een email adres op te geven in de url!</h3>
+                        <button type="submit" data-theme="b" data-icon="check">Ok</button>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <div data-role="footer" data-fixed="true" style="text-align: center; padding: 5px 0;">
@@ -61,8 +75,10 @@
                 <textarea  id="usertext" name="usertext"></textarea>
 
                 <div class="hiddenfile">
+
                     <input type="file" name="userfile" accept="image/*;capture=camera"/>
                     <input type="text" name="ident8" id="ident8">
+                    <input type="text" name="email" id="email">
                     <input type="text" name="refpt" id="refpt">
                     <input type="text" name="lambert72" id="lambert72">
                     <input type="text" name="wgs84lon" id="wgs84lon">

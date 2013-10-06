@@ -1,4 +1,4 @@
-var p_email, p_lon,p_lat
+var p_email, p_lon, p_lat;
 
 OpenLayers.Util.onImageLoadError = function() {
     this.style.display="none"
@@ -11,6 +11,7 @@ function getURLParameter(name) {
 }
 
 function startup() {
+
 //    if (window.location.hash && window.location.hash != "#mappage") {
 //        $.mobile.changePage("#mappage");
 //    }
@@ -20,10 +21,12 @@ function startup() {
 //         console.log("id is: " & query)
 
     p_email = getURLParameter("email");
-    if (p_email){
-        console.log(p_email);
+    if (p_email == "null"){
+        $("#lnkDialog").click();
+        $("#lnkDialog").hide();
     } else {
-        console.log("geen email adres");
+        $("#lnkDialog").hide();
+        $("#email").val(p_email);
     }
 
 

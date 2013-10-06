@@ -72,7 +72,7 @@
         # compose message
         $my_file = basename($kmlfile);
         $my_path = $uploaddir;
-        $my_replyto = "marc.vandael@mow.vlaanderen.be";
+        $my_replyto = $_POST["email"];
         $my_subject = "Dorothea Mailservice";
         $my_message  = 'SURVEY ID: ' . $idgenerator .               "\r\n";
         $my_message .= '########################################'.  "\r\n";
@@ -87,7 +87,7 @@
         $my_message .= 'IMAGE : ' .'http://10.132.32.231/dorothea/uploads/' . basename($uploadfile).  "\r\n";
         $my_message .= 'KML : ' .  'http://10.132.32.231/dorothea/uploads/' . basename($kmlfile). "\r\n";
 
-        mail_attachment($my_file, $my_path, "marc.vandael@mow.vlaanderen.be", $my_mail, $my_name, $my_replyto, $my_subject, $my_message);
+        mail_attachment($my_file, $my_path, $_POST["email"], $my_mail, $my_name, $my_replyto, $my_subject, $my_message);
     }
 
     #  upload to geoloket personal config
@@ -129,6 +129,9 @@
         $verboseLog = stream_get_contents($verbose);
 
         echo "Verbose information:\n<pre>", htmlspecialchars($verboseLog), "</pre>\n";
+        echo "Doorverwijzen binnen 3 seconden";
+        sleep(3);//seconds to wait..
+        header("Location:http://10.132.32.231/dorothea?email=" . $_POST["email"]);
 
 
 
