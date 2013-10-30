@@ -93,19 +93,67 @@
     #  upload to geoloket personal config
     if (isset($_POST['checkb_geoloket'])) {
 
-        #obviously, we're trying to push some dummy data for now
-//        $data = array (
-//            Annotaties =>
-//            array (
-//                x => "51.2515",
-//                y => "5.123",
-//                imgurl => "www.test.be/test/test",
-//                text => "testbeschrijving"
-//            ),
-//        );
+        $send_curl = curl_init($geoloket_put_url);
+        curl_setopt($send_curl, CURLOPT_URL, $geoloket_put_url);
+        curl_setopt($send_curl, CURLOPT_HEADER, false);
+        curl_setopt($send_curl, CURLOPT_CONNECTTIMEOUT, 2);
+        curl_setopt($send_curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($send_curl, CURLOPT_HTTPHEADER,array('Accept: application/json', "Content-type: application/json"));
+        curl_setopt($send_curl, CURLOPT_FAILONERROR, FALSE);
+        curl_setopt($send_curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($send_curl, CURLOPT_SSL_VERIFYHOST, FALSE);
+        $json_response = curl_exec($send_curl);
+        $status = curl_getinfo($send_curl, CURLINFO_HTTP_CODE);
+        curl_close($send_curl);
+
+        $response = json_decode($json_response, true);
 
 
-        $data = (array("ConfigServices_error_mail_to_address" => "dorothea_mobile@mow.vlaanderen.be"));
+
+//        $curl = curl_init();
+//        curl_setopt_array($curl, array(
+//            CURLOPT_RETURNTRANSFER => 1,
+//            CURLOPT_URL => $geoloket_put_url,
+//            CURLOPT_CUSTOMREQUEST => "GET",
+//            CURLOPT_VERBOSE, 1
+//        ));
+//
+//        $verbose = fopen('php://temp', 'rw+');
+//        curl_setopt($curl, CURLOPT_STDERR, $verbose);
+//
+//        $resp = curl_exec($curl);
+//        echo $resp;
+//
+//
+//                !rewind($verbose);
+//        $verboseLog = stream_get_contents($verbose);
+//        curl_close($curl);
+
+
+
+        $data = array ('Annotatie' => array(array(
+            'type' => 'FeatureCollection',
+            'features' => array(
+                array(
+                    'type' => 'Feature',
+                    'geometry' => array(
+//                        'coordinates' => array(lon, lat),
+                        'coordinates' => array((float)$_POST["lambert72lon"],(float)$_POST["lambert72lat"]),
+                        'type' => 'Point'
+                    ),
+                    'properties' => array(
+                        'lijnkleur'     => '#FFCC00',
+                        'vulkleur'      => '#FFCC00',
+                        'transparantie' => 0.4,
+                        'lijnstijl'     => 'dash',
+                        'lijndikte'     => 2,
+                        'puntdikte'     => 5
+                    )
+                )
+            )
+        )));
+
+
         $data_string = json_encode($data);
 
         $ch = curl_init($geoloket_put_url);
@@ -132,10 +180,5 @@
         echo "Doorverwijzen binnen 3 seconden";
         sleep(3);//seconds to wait..
         header("Location:http://10.132.32.231/dorothea?email=" . $_POST["email"]);
-
-
-
-
-
     }
 ?>

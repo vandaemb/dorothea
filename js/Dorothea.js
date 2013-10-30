@@ -268,6 +268,8 @@ function init() {
             $("#refpt").val(locjson.position);
             $("#lambert72").val("(" + lonlat.lon + "," + lonlat.lat + ")");
             $("#wgs84").val("(" + gpslonlat.lon + "," + gpslonlat.lat + ")");
+            $("#lambert72lon").val(lonlat.lon);
+            $("#lambert72lat").val(lonlat.lat);
 
         });
     }
